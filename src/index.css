@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Toronto Subway';
+  src: url('/Toronto-Subway-W01-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFCamera';
+  src: url('/SFCamera-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Toronto Subway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  min-height: 100vh;
+}
