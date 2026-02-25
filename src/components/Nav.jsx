@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import LoginModal from './LoginModal'
+import ProfileCard from './ProfileCard'
 import './Nav.css'
 
 const SECTION_LABELS = {
@@ -18,6 +19,8 @@ export default function Nav() {
   )
   const [loginOpen, setLoginOpen] = useState(false)
   const [session, setSession] = useState(null)
+  const [profileOpen, setProfileOpen] = useState(false)
+  const profileTimer = useRef(null)
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', dark)
@@ -32,6 +35,15 @@ export default function Nav() {
     })
     return () => subscription.unsubscribe()
   }, [])
+
+  function openProfile() {
+    clearTimeout(profileTimer.current)
+    setProfileOpen(true)
+  }
+
+  function closeProfile() {
+    profileTimer.current = setTimeout(() => setProfileOpen(false), 120)
+  }
 
   const section = SECTION_LABELS[location.pathname]
   const loggedIn = !!session
@@ -48,15 +60,22 @@ export default function Nav() {
           <li><Link to="/news" className={location.pathname === '/news' ? 'active' : ''}>News</Link></li>
           <li><Link to="/photography" className={location.pathname === '/photography' ? 'active' : ''}>Photography</Link></li>
           <li><Link to="/writing" className={location.pathname === '/writing' ? 'active' : ''}>Writing</Link></li>
-          
 
-          {!loggedIn ? <li>
-            <button className="nav-login-btn" onClick={() => setLoginOpen(true)}>Log In</button>
-          </li> : 
+          {!loggedIn ? (
             <li>
-            <button className="nav-login-btn" onClick={() => setLoginOpen(true)}>Profile</button>
-          </li>
-          }
+              <button className="nav-login-btn" onClick={() => setLoginOpen(true)}>Log In</button>
+            </li>
+          ) : (
+            <li
+              className="profile-anchor"
+              onMouseEnter={openProfile}
+              onMouseLeave={closeProfile}
+            >
+              <button className="nav-profile-btn">Profile</button>
+              {profileOpen && <ProfileCard session={session} />}
+            </li>
+          )}
+
           <li>
             <button className="theme-toggle" onClick={() => setDark(d => !d)} aria-label="Toggle theme">
               {dark ? '☀' : '☾'}

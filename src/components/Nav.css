@@ -29,42 +29,46 @@
 
 .nav-links {
   display: flex;
-  gap: 28px;
+  gap: 4px;
   align-items: center;
   list-style: none;
 }
 
-.nav-links a {
+/* Shared chip style — applied to all nav items on hover */
+.nav-links a,
+.nav-login-btn,
+.nav-profile-btn {
   font-size: 13px;
+  font-family: inherit;
   color: var(--text-2);
   text-decoration: none;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  transition: color 0.15s;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
 }
 
 .nav-links a:hover,
+.nav-login-btn:hover,
+.nav-profile-btn:hover {
+  color: var(--text);
+  background: var(--card-bg);
+}
+
 .nav-links a.active {
   color: var(--text);
 }
 
-.nav-login-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 13px;
-  font-family: inherit;
-  color: var(--text-2);
-  padding: 0;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transition: color 0.15s;
+/* Profile-specific */
+.profile-anchor {
+  position: relative;
 }
 
-.nav-login-btn:hover {
-  color: var(--text);
-}
-
+/* Theme toggle stays icon-only, no chip */
 .theme-toggle {
   background: none;
   border: none;

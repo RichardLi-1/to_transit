@@ -1,0 +1,99 @@
+.profile-card {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--card-bg);
+  border-radius: 20px;
+  corner-shape: squircle;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 50;
+  animation: profile-card-in 0.18s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+@keyframes profile-card-in {
+  from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.profile-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: var(--text);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
+
+.profile-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-settings-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-3);
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+  flex-shrink: 0;
+}
+
+.profile-settings-btn:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+.profile-joined {
+  font-size: 12px;
+  color: var(--text-3);
+  letter-spacing: 0.02em;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.profile-action-btn {
+  flex: 1;
+  font-family: 'Toronto Subway', 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  padding: 10px 8px;
+  border: none;
+  border-radius: 9999px;
+  background: var(--text);
+  color: var(--bg);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.profile-action-btn:hover {
+  opacity: 0.8;
+}
