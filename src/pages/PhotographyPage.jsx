@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './PhotographyPage.css'
+import Nav from '../components/Nav'
 import PhotoModal from '../components/PhotoModal'
 
 const featuredPhoto = {
@@ -28,16 +29,7 @@ export default function PhotographyPage() {
 
   return (
     <div className="site">
-      {/* Nav */}
-      <nav className="nav">
-        <span className="nav-logo"><a href="/" className="nav-logo-home">TO TRANSIT</a> <span className="nav-logo-section">PHOTOGRAPHY</span></span>
-        <ul className="nav-links">
-          <li><a href="#">Progress</a></li>
-          <li><a href="#">News</a></li>
-          <li><a href="#" className="active">Photography</a></li>
-          <li><a href="#">Writing</a></li>
-        </ul>
-      </nav>
+      <Nav />
 
       <main className="main">
         {/* Hero heading */}
@@ -112,7 +104,7 @@ export default function PhotographyPage() {
 
       {/* Footer */}
       <footer className="footer">
-        <a href="https://discord.gg/9n7CMmEpcb" target="_blank" className="discord-link">Join the Discord Server</a>
+        <a href="https://discord.gg/9n7CMmEpcb" target="_blank" rel="noreferrer" className="discord-link">Join the Discord Server</a>
       </footer>
 
       {/* Photo modal */}
